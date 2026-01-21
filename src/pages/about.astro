@@ -1,0 +1,238 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import FloatingWhatsApp from "../components/FloatingWhatsApp";
+import type { Language } from "../lib/i18n";
+import { getTranslations } from "../lib/i18n";
+
+const lang = (Astro.url.searchParams.get("lang") as Language) || "fr";
+const t = getTranslations(lang);
+
+const values =
+    lang === "ar"
+        ? [
+              {
+                  title: "الخبرة",
+                  description: "أكثر من 20 سنة في مجال المساعدة على الإنجاب",
+                  icon: "🏆",
+              },
+              {
+                  title: "التكنولوجيا",
+                  description: "معدات حديثة ومختبرات متطورة",
+                  icon: "🔬",
+              },
+              {
+                  title: "الفريق",
+                  description: "أطباء وأخصائيون ذوو خبرة عالية",
+                  icon: "👨‍⚕️",
+              },
+              {
+                  title: "الرعاية",
+                  description: "مرافقة شخصية في كل مرحلة",
+                  icon: "💚",
+              },
+          ]
+        : [
+              {
+                  title: "Expertise",
+                  description: "Plus de 20 ans d'expérience en PMA",
+                  icon: "🏆",
+              },
+              {
+                  title: "Technologie",
+                  description: "Équipements modernes et laboratoires avancés",
+                  icon: "🔬",
+              },
+              {
+                  title: "Équipe",
+                  description: "Médecins et spécialistes hautement qualifiés",
+                  icon: "👨‍⚕️",
+              },
+              {
+                  title: "Accompagnement",
+                  description: "Suivi personnalisé à chaque étape",
+                  icon: "💚",
+              },
+          ];
+---
+
+<BaseLayout
+    title={lang === "ar" ? "من نحن - عيادة أودان" : "À Propos - Clinique Audin"}
+    lang={lang}
+>
+    <Header lang={lang} currentPath="/about" />
+
+    <main class="pt-24">
+        <!-- Hero Section -->
+        <section
+            class="py-16 bg-gradient-to-br from-primary via-primary-light to-accent text-white"
+        >
+            <div class="container text-center">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">
+                    {lang === "ar" ? "من نحن" : "À Propos de Nous"}
+                </h1>
+                <p class="text-xl text-white/80 max-w-2xl mx-auto">
+                    {
+                        lang === "ar"
+                            ? "عيادة أودان، مركز المساعدة على الإنجاب في الجزائر"
+                            : "Clinique Audin, votre centre PMA à Alger"
+                    }
+                </p>
+            </div>
+        </section>
+
+        <!-- About Content -->
+        <section class="section">
+            <div class="container">
+                <div
+                    class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
+                >
+                    <!-- Text Content -->
+                    <div>
+                        <span
+                            class="inline-block px-4 py-1.5 bg-secondary/10 text-secondary-dark text-sm font-semibold rounded-full mb-4"
+                        >
+                            {lang === "ar" ? "قصتنا" : "Notre Histoire"}
+                        </span>
+                        <h2
+                            class="text-3xl md:text-4xl font-bold text-dark mb-6"
+                        >
+                            {
+                                lang === "ar"
+                                    ? "أكثر من 20 سنة من الخبرة"
+                                    : "Plus de 20 ans d'excellence"
+                            }
+                        </h2>
+                        <div class="space-y-4 text-gray-600 leading-relaxed">
+                            <p>
+                                {
+                                    lang === "ar"
+                                        ? "تأسست عيادة أودان في قلب الجزائر العاصمة بهدف تقديم أفضل خدمات المساعدة على الإنجاب. على مدار أكثر من عشرين سنة، رافقنا آلاف العائلات في رحلتهم نحو تحقيق حلم الأبوة."
+                                        : "La Clinique Audin a été fondée au cœur d'Alger avec pour mission d'offrir les meilleurs services de procréation médicalement assistée. Depuis plus de vingt ans, nous accompagnons des milliers de familles dans leur parcours vers la parentalité."
+                                }
+                            </p>
+                            <p>
+                                {
+                                    lang === "ar"
+                                        ? "نحن نؤمن بأهمية الجمع بين التكنولوجيا المتقدمة والرعاية الإنسانية. فريقنا من الأطباء والأخصائيين يلتزم بتقديم أفضل رعاية ممكنة، مع احترام قيم وخصوصية كل عائلة."
+                                        : "Nous croyons en l'importance de combiner technologie de pointe et accompagnement humain. Notre équipe de médecins et spécialistes s'engage à fournir les meilleurs soins possibles, dans le respect des valeurs et de la vie privée de chaque famille."
+                                }
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Visual -->
+                    <div class="relative">
+                        <div
+                            class="aspect-square bg-gradient-to-br from-light to-gray-100 rounded-3xl p-8 flex items-center justify-center"
+                        >
+                            <div class="text-center">
+                                <div
+                                    class="w-32 h-32 mx-auto mb-6 bg-gradient-to-br from-primary to-accent rounded-full flex items-center justify-center"
+                                >
+                                    <svg
+                                        class="w-16 h-16 text-white"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="1.5"
+                                    >
+                                        <circle cx="12" cy="12" r="10"></circle>
+                                        <circle cx="12" cy="12" r="4"></circle>
+                                        <path d="M12 2v4M12 18v4M2 12h4M18 12h4"
+                                        ></path>
+                                    </svg>
+                                </div>
+                                <h3
+                                    class="text-2xl font-bold gradient-text mb-2"
+                                >
+                                    Clinique Audin
+                                </h3>
+                                <p class="text-gray-500">Centre PMA</p>
+                            </div>
+                        </div>
+
+                        <!-- Floating Badge -->
+                        <div
+                            class="absolute -bottom-4 -right-4 bg-white rounded-2xl shadow-xl p-6"
+                        >
+                            <div class="text-center">
+                                <div
+                                    class="text-4xl font-bold gradient-text-gold"
+                                >
+                                    20+
+                                </div>
+                                <div class="text-sm text-gray-500">
+                                    {
+                                        lang === "ar"
+                                            ? "سنة خبرة"
+                                            : "Ans d'expérience"
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Values Section -->
+        <section class="section section-light">
+            <div class="container">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-dark mb-4">
+                        {lang === "ar" ? "قيمنا" : "Nos Valeurs"}
+                    </h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">
+                        {
+                            lang === "ar"
+                                ? "المبادئ التي توجه عملنا كل يوم"
+                                : "Les principes qui guident notre travail au quotidien"
+                        }
+                    </p>
+                </div>
+
+                <div
+                    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+                >
+                    {
+                        values.map((value) => (
+                            <div class="premium-card text-center">
+                                <div class="text-4xl mb-4">{value.icon}</div>
+                                <h3 class="text-xl font-bold text-dark mb-2">
+                                    {value.title}
+                                </h3>
+                                <p class="text-gray-600 text-sm">
+                                    {value.description}
+                                </p>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="section">
+            <div class="container text-center">
+                <h2 class="text-3xl font-bold text-dark mb-4">
+                    {lang === "ar" ? "مستعدون للبدء؟" : "Prêt à commencer ?"}
+                </h2>
+                <p class="text-gray-600 mb-8 max-w-xl mx-auto">
+                    {
+                        lang === "ar"
+                            ? "تواصل معنا اليوم لحجز أول استشارة مع فريقنا الطبي."
+                            : "Contactez-nous aujourd'hui pour prendre votre premier rendez-vous avec notre équipe médicale."
+                    }
+                </p>
+                <a href="/contact" class="btn btn-primary">
+                    {lang === "ar" ? "تواصل معنا" : "Nous Contacter"}
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <Footer lang={lang} />
+    <FloatingWhatsApp client:load lang={lang} phoneNumber="213560055803" />
+</BaseLayout>

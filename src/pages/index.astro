@@ -1,0 +1,47 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Hero from "../components/Hero.astro";
+import Services from "../components/Services.astro";
+import WhyChooseUs from "../components/WhyChooseUs.astro";
+import Stats from "../components/Stats.astro";
+import Convention from "../components/Convention.astro";
+import CTA from "../components/CTA.astro";
+import Footer from "../components/Footer.astro";
+import FloatingWhatsApp from "../components/FloatingWhatsApp";
+
+// Get language from URL params or default to French
+const lang = (Astro.url.searchParams.get("lang") as "fr" | "ar") || "fr";
+---
+
+<BaseLayout
+	title="Clinique Audin - Centre de Procréation Médicalement Assistée | PMA Alger"
+	lang={lang}
+	description="Clinique Audin, centre PMA à Alger. 20 ans d'expérience en FIV, ICSI, insémination et traitements de fertilité. Équipe experte et accompagnement personnalisé."
+>
+	<Header lang={lang} currentPath="/" />
+
+	<main>
+		<Hero lang={lang} />
+
+		<div class="section-divider"></div>
+
+		<Services lang={lang} />
+
+		<div class="section-divider"></div>
+
+		<WhyChooseUs lang={lang} />
+
+		<Stats lang={lang} />
+
+		<div class="section-divider"></div>
+
+		<Convention lang={lang} />
+
+		<CTA lang={lang} />
+	</main>
+
+	<Footer lang={lang} />
+
+	<FloatingWhatsApp client:load lang={lang} phoneNumber="213560055803" />
+</BaseLayout>

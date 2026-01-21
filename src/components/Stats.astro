@@ -1,0 +1,74 @@
+---
+import type { Language } from "../lib/i18n";
+import { getTranslations } from "../lib/i18n";
+
+interface Props {
+    lang?: Language;
+}
+
+const { lang = "fr" } = Astro.props;
+const t = getTranslations(lang);
+---
+
+<section class="section section-dark relative overflow-hidden" id="stats">
+    <!-- Background Effects -->
+    <div class="absolute inset-0 opacity-10">
+        <div
+            class="absolute top-0 left-0 w-96 h-96 bg-secondary rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"
+        >
+        </div>
+        <div
+            class="absolute bottom-0 right-0 w-96 h-96 bg-accent rounded-full blur-3xl translate-x-1/2 translate-y-1/2"
+        >
+        </div>
+    </div>
+
+    <div class="container relative z-10">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">
+                {lang === "ar" ? "أرقام تتحدث عنا" : "Des chiffres qui parlent"}
+            </h2>
+            <p class="text-white/70 max-w-2xl mx-auto">
+                {
+                    lang === "ar"
+                        ? "نرافق العائلات منذ أكثر من عشرين سنة بكل احترافية وثقة"
+                        : "Nous accompagnons les familles depuis plus de vingt ans avec professionnalisme et confiance"
+                }
+            </p>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <!-- Families -->
+            <div class="text-center">
+                <div class="text-5xl md:text-6xl font-bold text-white mb-2">
+                    <span class="inline-block" id="stat-families">1000</span>+
+                </div>
+                <div class="text-white/70">{t.stats.families}</div>
+            </div>
+
+            <!-- Experience -->
+            <div class="text-center">
+                <div class="text-5xl md:text-6xl font-bold text-white mb-2">
+                    <span class="inline-block">20</span>+
+                </div>
+                <div class="text-white/70">{t.stats.experience}</div>
+            </div>
+
+            <!-- Satisfaction -->
+            <div class="text-center">
+                <div class="text-5xl md:text-6xl font-bold text-white mb-2">
+                    <span class="inline-block">98</span>%
+                </div>
+                <div class="text-white/70">{t.stats.satisfaction}</div>
+            </div>
+
+            <!-- Support -->
+            <div class="text-center">
+                <div class="text-5xl md:text-6xl font-bold text-white mb-2">
+                    <span class="inline-block">6/7</span>
+                </div>
+                <div class="text-white/70">{t.stats.support}</div>
+            </div>
+        </div>
+    </div>
+</section>

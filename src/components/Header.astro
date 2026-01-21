@@ -1,0 +1,345 @@
+---
+import type { Language } from "../lib/i18n";
+import { getTranslations } from "../lib/i18n";
+
+interface Props {
+    lang?: Language;
+    currentPath?: string;
+}
+
+const { lang = "fr", currentPath = "/" } = Astro.props;
+const t = getTranslations(lang);
+const isRTL = lang === "ar";
+
+const navLinks = [
+    { href: "/", label: t.nav.home },
+    { href: "/services", label: t.nav.services },
+    { href: "/about", label: t.nav.about },
+    { href: "/convention", label: lang === "ar" ? "الاتفاقيات" : "Convention" },
+    { href: "/contact", label: t.nav.contact },
+];
+---
+
+<header class="fixed top-0 left-0 right-0 z-50 py-4" id="header">
+    <div class="container">
+        <nav class="flex items-center justify-between">
+            <!-- Logo -->
+            <a
+                href="/"
+                class="flex items-center gap-3 group px-4 py-2 bg-white/95 backdrop-blur-md rounded-full shadow-lg"
+            >
+                <div
+                    class="w-10 h-10 bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center shadow-lg group-hover:scale-105 transition-transform"
+                >
+                    <svg
+                        class="w-6 h-6 text-white"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="2"
+                    >
+                        <path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z"></path>
+                        <path d="M12 8v4l2 2"></path>
+                        <circle cx="12" cy="12" r="2" fill="currentColor"
+                        ></circle>
+                    </svg>
+                </div>
+                <div class="hidden sm:flex flex-col">
+                    <span class="text-lg font-bold text-primary leading-tight"
+                        >Clinique Audin</span
+                    >
+                    <span class="text-xs text-gray-500">Centre PMA</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <div class="hidden lg:flex items-center pill-nav-container">
+                <ul class="pill-list">
+                    {
+                        navLinks.map((link) => (
+                            <li>
+                                <a
+                                    href={link.href}
+                                    class={`pill ${currentPath === link.href ? "pill-active" : ""}`}
+                                >
+                                    <span class="pill-label">{link.label}</span>
+                                </a>
+                            </li>
+                        ))
+                    }
+                </ul>
+            </div>
+
+            <!-- Language Switcher & CTA -->
+            <div class="hidden lg:flex items-center gap-4">
+                <div
+                    class="flex items-center gap-1 bg-white/95 backdrop-blur-md rounded-full p-1 shadow-lg"
+                >
+                    <a
+                        href="?lang=fr"
+                        class={`px-3 py-1.5 rounded-full text-sm font-medium transition-all ${lang === "fr" ? "bg-primary text-white" : "text-gray-600 hover:bg-gray-100"}`}
+                    >
+                        FR
+                    </a>
+                    <a
+                        href="?lang=ar"
+                        class={`px-3 py-1.5 rounded-full text-sm font-medium transition-all ${lang === "ar" ? "bg-primary text-white" : "text-gray-600 hover:bg-gray-100"}`}
+                    >
+                        عربي
+                    </a>
+                </div>
+                <a href="/contact" class="btn btn-secondary text-sm py-2 px-4">
+                    {t.hero.cta_primary}
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button
+                class="lg:hidden px-3 py-3 bg-white/95 backdrop-blur-md rounded-full shadow-lg mobile-menu-btn"
+                id="mobile-menu-btn"
+                aria-label="Toggle menu"
+            >
+                <div class="hamburger-container">
+                    <span class="hamburger-line"></span>
+                    <span class="hamburger-line"></span>
+                </div>
+            </button>
+        </nav>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobile-menu">
+        <div class="mobile-menu-inner">
+            <ul class="mobile-menu-list">
+                {
+                    navLinks.map((link) => (
+                        <li>
+                            <a
+                                href={link.href}
+                                class={`mobile-menu-link ${currentPath === link.href ? "mobile-menu-link-active" : ""}`}
+                            >
+                                {link.label}
+                            </a>
+                        </li>
+                    ))
+                }
+            </ul>
+
+            <!-- Mobile Language Switcher -->
+            <div
+                class="flex justify-center gap-2 mt-4 pt-4 border-t border-gray-200"
+            >
+                <a
+                    href="?lang=fr"
+                    class={`px-4 py-2 rounded-full text-sm font-medium transition-all ${lang === "fr" ? "bg-primary text-white" : "bg-gray-100 text-gray-600"}`}
+                >
+                    Français
+                </a>
+                <a
+                    href="?lang=ar"
+                    class={`px-4 py-2 rounded-full text-sm font-medium transition-all ${lang === "ar" ? "bg-primary text-white" : "bg-gray-100 text-gray-600"}`}
+                >
+                    عربي
+                </a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<style>
+    /* Navigation Pills Container */
+    .pill-nav-container {
+        background: var(--color-primary);
+        border-radius: 9999px;
+        padding: 3px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .pill-list {
+        list-style: none;
+        display: flex;
+        align-items: center;
+        gap: 3px;
+        margin: 0;
+        padding: 0;
+    }
+
+    .pill {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 10px 18px;
+        background: transparent;
+        color: #ffffff;
+        text-decoration: none;
+        border-radius: 9999px;
+        font-weight: 600;
+        font-size: 14px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        position: relative;
+        overflow: hidden;
+    }
+
+    .pill::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: var(--color-secondary);
+        border-radius: 9999px;
+        transform: scale(0);
+        transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 0;
+    }
+
+    .pill:hover::before {
+        transform: scale(1);
+    }
+
+    .pill-label {
+        position: relative;
+        z-index: 1;
+        transition: color 0.3s ease;
+    }
+
+    .pill:hover .pill-label {
+        color: #ffffff;
+    }
+
+    .pill-active {
+        background: var(--color-primary);
+    }
+
+    .pill-active .pill-label {
+        color: #ffffff;
+    }
+
+    /* Mobile Menu Button */
+    .mobile-menu-btn {
+        position: relative;
+        border: none;
+        cursor: pointer;
+    }
+
+    .hamburger-container {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .hamburger-line {
+        width: 16px;
+        height: 2px;
+        background: var(--color-primary);
+        border-radius: 1px;
+        transition: all 0.3s ease;
+        transform-origin: center;
+    }
+
+    .mobile-menu-btn.menu-open .hamburger-line:first-child {
+        transform: rotate(45deg) translateY(3px);
+    }
+
+    .mobile-menu-btn.menu-open .hamburger-line:last-child {
+        transform: rotate(-45deg) translateY(-3px);
+    }
+
+    /* Mobile Menu */
+    .mobile-menu {
+        position: fixed;
+        top: 70px;
+        left: 1rem;
+        right: 1rem;
+        background: white;
+        border-radius: 24px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+        z-index: 60;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px) scale(0.95);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        transform-origin: top center;
+    }
+
+    .mobile-menu.open {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0) scale(1);
+    }
+
+    .mobile-menu-inner {
+        padding: 1rem;
+    }
+
+    .mobile-menu-list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+    }
+
+    .mobile-menu-link {
+        display: block;
+        padding: 14px 18px;
+        color: var(--color-dark);
+        background: var(--color-light);
+        text-decoration: none;
+        font-size: 15px;
+        font-weight: 600;
+        border-radius: 12px;
+        transition: all 0.2s ease;
+    }
+
+    .mobile-menu-link:hover {
+        background: var(--color-secondary);
+        color: var(--color-dark);
+    }
+
+    .mobile-menu-link-active {
+        background: var(--color-primary);
+        color: white;
+    }
+
+    @media (max-width: 1024px) {
+        .pill-nav-container {
+            display: none;
+        }
+    }
+</style>
+
+<script>
+    const mobileMenuBtn = document.getElementById("mobile-menu-btn");
+    const mobileMenu = document.getElementById("mobile-menu");
+
+    mobileMenuBtn?.addEventListener("click", () => {
+        mobileMenu?.classList.toggle("open");
+        mobileMenuBtn.classList.toggle("menu-open");
+        document.body.style.overflow = mobileMenu?.classList.contains("open")
+            ? "hidden"
+            : "";
+    });
+
+    document.querySelectorAll("#mobile-menu a").forEach((link) => {
+        link.addEventListener("click", () => {
+            mobileMenu?.classList.remove("open");
+            mobileMenuBtn?.classList.remove("menu-open");
+            document.body.style.overflow = "";
+        });
+    });
+
+    document.addEventListener("click", (e) => {
+        const target = e.target as HTMLElement;
+        if (
+            mobileMenu?.classList.contains("open") &&
+            !mobileMenu.contains(target) &&
+            !mobileMenuBtn?.contains(target)
+        ) {
+            mobileMenu.classList.remove("open");
+            mobileMenuBtn?.classList.remove("menu-open");
+            document.body.style.overflow = "";
+        }
+    });
+</script>

@@ -1,0 +1,79 @@
+---
+import "../styles/global.css";
+
+interface Props {
+    title: string;
+    description?: string;
+    lang?: "fr" | "ar";
+}
+
+const {
+    title,
+    description = "Clinique Audin - Centre de Procréation Médicalement Assistée à Alger. 20 ans d'expérience en FIV, ICSI, et traitements de fertilité.",
+    lang = "fr",
+} = Astro.props;
+
+const isRTL = lang === "ar";
+---
+
+<!doctype html>
+<html lang={lang} dir={isRTL ? "rtl" : "ltr"}>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="description" content={description} />
+        <meta
+            name="keywords"
+            content="PMA, FIV, ICSI, fertilité, clinique, Alger, Audin, procréation assistée, insémination, vitrification"
+        />
+        <meta name="author" content="Clinique Audin" />
+
+        <!-- Open Graph -->
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+        <meta property="og:type" content="website" />
+        <meta
+            property="og:locale"
+            content={lang === "ar" ? "ar_DZ" : "fr_DZ"}
+        />
+
+        <!-- Favicon -->
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+        <title>{title}</title>
+    </head>
+    <body class={isRTL ? "font-arabic" : "font-sans"}>
+        <slot />
+    </body>
+</html>
+
+<style is:global>
+    /* Ensure smooth page transitions */
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* RTL specific adjustments */
+    html[dir="rtl"] {
+        text-align: right;
+    }
+
+    html[dir="rtl"] .text-left {
+        text-align: right;
+    }
+
+    html[dir="rtl"] .text-right {
+        text-align: left;
+    }
+
+    /* Flip margins and paddings for RTL */
+    html[dir="rtl"] .ml-auto {
+        margin-left: 0;
+        margin-right: auto;
+    }
+
+    html[dir="rtl"] .mr-auto {
+        margin-right: 0;
+        margin-left: auto;
+    }
+</style>

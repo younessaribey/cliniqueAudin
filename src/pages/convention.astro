@@ -1,0 +1,32 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Convention from "../components/Convention.astro";
+import CTA from "../components/CTA.astro";
+import Footer from "../components/Footer.astro";
+import FloatingWhatsApp from "../components/FloatingWhatsApp";
+
+// Get language from URL params or default to French
+const lang = (Astro.url.searchParams.get("lang") as "fr" | "ar") || "fr";
+---
+
+<BaseLayout
+    title={lang === "ar"
+        ? "الاتفاقيات - كلينيك أودان"
+        : "Convention - Clinique Audin"}
+    lang={lang}
+    description={lang === "ar"
+        ? "شراكاتنا مع المؤسسات الكبرى - DGSN, SONATRACH, DOUANE, Inter Partner Assistance"
+        : "Nos conventions avec les grandes institutions - DGSN, SONATRACH, DOUANE, Inter Partner Assistance"}
+>
+    <Header lang={lang} currentPath="/convention" />
+
+    <main class="pt-24">
+        <Convention lang={lang} />
+        <CTA lang={lang} />
+    </main>
+
+    <Footer lang={lang} />
+
+    <FloatingWhatsApp client:load lang={lang} phoneNumber="213560055803" />
+</BaseLayout>

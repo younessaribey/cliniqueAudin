@@ -1,0 +1,117 @@
+{
+    "nav": {
+        "home": "Accueil",
+        "services": "Services",
+        "about": "À Propos",
+        "contact": "Contact"
+    },
+    "hero": {
+        "badge": "20 ans d'expérience en PMA",
+        "title_line1": "De l'espoir",
+        "title_line2": "à la vie",
+        "subtitle": "Science – Confiance – Résultats",
+        "description": "Vous n'êtes pas seuls. Nous sommes là, étape par étape, pour vous accompagner vers votre rêve de parentalité.",
+        "cta_primary": "Prendre Rendez-vous",
+        "cta_secondary": "Découvrir nos services"
+    },
+    "services": {
+        "section_title": "Nos Services",
+        "section_subtitle": "Une gamme complète de traitements de procréation médicalement assistée",
+        "fiv": {
+            "title": "FIV",
+            "description": "Fécondation In Vitro - Une technique éprouvée pour aider à la conception"
+        },
+        "icsi": {
+            "title": "ICSI",
+            "description": "Injection Intracytoplasmique - Technique de micro-injection pour une fertilisation optimale"
+        },
+        "insemination": {
+            "title": "Insémination",
+            "description": "Insémination artificielle - Une méthode douce pour favoriser la grossesse"
+        },
+        "biopsie": {
+            "title": "Biopsie (TESE)",
+            "description": "Extraction testiculaire de spermatozoïdes pour les cas d'azoospermie"
+        },
+        "vitrification": {
+            "title": "Vitrification",
+            "description": "Congélation d'ovocytes et d'embryons pour préserver votre fertilité"
+        },
+        "gynecologie": {
+            "title": "Gynécologie",
+            "description": "Suivi gynécologique complet et personnalisé"
+        },
+        "chirurgie": {
+            "title": "Chirurgie",
+            "description": "Interventions chirurgicales par une équipe expérimentée"
+        },
+        "analyses": {
+            "title": "Analyses Médicales",
+            "description": "Laboratoire équipé pour tous vos bilans de fertilité"
+        }
+    },
+    "whyUs": {
+        "section_title": "Pourquoi Nous Choisir",
+        "section_subtitle": "Une expertise reconnue depuis plus de 20 ans",
+        "experience": {
+            "title": "20+ Ans d'Expérience",
+            "description": "Deux décennies de succès en procréation médicalement assistée"
+        },
+        "team": {
+            "title": "Équipe Experte",
+            "description": "Médecins, biologistes et psychologues dévoués à votre parcours"
+        },
+        "technology": {
+            "title": "Technologie Avancée",
+            "description": "Équipements de dernière génération pour des résultats optimaux"
+        },
+        "ethics": {
+            "title": "Éthique & Confidentialité",
+            "description": "Un accompagnement respectueux de vos valeurs et votre vie privée"
+        }
+    },
+    "stats": {
+        "families": "Familles Accompagnées",
+        "experience": "Années d'Expérience",
+        "satisfaction": "Taux de Satisfaction",
+        "support": "Support Disponible"
+    },
+    "contact": {
+        "section_title": "Contactez-nous",
+        "section_subtitle": "Notre équipe est à votre écoute",
+        "form": {
+            "name": "Nom Complet",
+            "name_placeholder": "Votre nom",
+            "phone": "Téléphone",
+            "phone_placeholder": "+213",
+            "email": "Email",
+            "email_placeholder": "votre@email.com",
+            "message": "Message",
+            "message_placeholder": "Comment pouvons-nous vous aider ?",
+            "submit": "Envoyer",
+            "whatsapp": "Contacter via WhatsApp"
+        },
+        "info": {
+            "address": "13 Rue Didouche Mourad, Place Audin, Alger",
+            "phone1": "+213 (0) 560 055 803",
+            "phone2": "+213 (0) 670 358 323",
+            "phone3": "+213 (0) 770 246 733",
+            "email": "contact@cliniqueaudin.com",
+            "hours_title": "Heures d'ouverture",
+            "hours": "Samedi au jeudi : 7h30 à 17h"
+        }
+    },
+    "footer": {
+        "description": "Centre de Procréation Médicalement Assistée à Alger, accompagnant les couples depuis plus de 20 ans.",
+        "quick_links": "Liens Rapides",
+        "contact_info": "Coordonnées",
+        "follow_us": "Suivez-nous",
+        "copyright": "© 2026 Clinique Audin. Tous droits réservés."
+    },
+    "cta": {
+        "ready_title": "Prêt à Commencer Votre Parcours ?",
+        "ready_description": "Prenez rendez-vous pour une première consultation et découvrez comment nous pouvons vous aider.",
+        "book_now": "Prendre Rendez-vous",
+        "call_us": "Appelez-nous"
+    }
+}
