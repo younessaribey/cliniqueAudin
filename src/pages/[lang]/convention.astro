@@ -1,0 +1,39 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Header from "../../components/Header.astro";
+import ConventionSection from "../../components/Convention.astro";
+import CTA from "../../components/CTA.astro";
+import Footer from "../../components/Footer.astro";
+import FloatingWhatsApp from "../../components/FloatingWhatsApp";
+
+export function getStaticPaths() {
+    return [{ params: { lang: "fr" } }, { params: { lang: "ar" } }];
+}
+
+const { lang } = Astro.params;
+---
+
+<BaseLayout
+    title={lang === "ar"
+        ? "الاتفاقيات - كلينيك أودان"
+        : "Convention - Clinique Audin"}
+    lang={lang as "fr" | "ar"}
+    description={lang === "ar"
+        ? "شراكاتنا مع المؤسسات الكبرى - DGSN, SONATRACH, DOUANE, Inter Partner Assistance"
+        : "Nos conventions avec les grandes institutions - DGSN, SONATRACH, DOUANE, Inter Partner Assistance"}
+>
+    <Header lang={lang as "fr" | "ar"} currentPath="/convention" />
+
+    <main class="pt-24">
+        <ConventionSection lang={lang as "fr" | "ar"} />
+        <CTA lang={lang as "fr" | "ar"} />
+    </main>
+
+    <Footer lang={lang as "fr" | "ar"} />
+
+    <FloatingWhatsApp
+        client:load
+        lang={lang as "fr" | "ar"}
+        phoneNumber="213560055803"
+    />
+</BaseLayout>

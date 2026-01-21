@@ -43,7 +43,7 @@ const t = getTranslations(lang);
                 <!-- Social Links -->
                 <div class="flex gap-3">
                     <a
-                        href="https://www.facebook.com/audin.clinique"
+                        href="https://www.facebook.com/share/18EezQXT8T/"
                         target="_blank"
                         rel="noopener"
                         class="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-accent hover:text-gray-900 transition-all"
@@ -95,28 +95,28 @@ const t = getTranslations(lang);
                 <ul class="space-y-3">
                     <li>
                         <a
-                            href="/"
+                            href={`/${lang}`}
                             class="text-white/80 hover:text-accent transition-colors text-sm"
                             >{t.nav.home}</a
                         >
                     </li>
                     <li>
                         <a
-                            href="/services"
+                            href={`/${lang}/services`}
                             class="text-white/80 hover:text-accent transition-colors text-sm"
                             >{t.nav.services}</a
                         >
                     </li>
                     <li>
                         <a
-                            href="/about"
+                            href={`/${lang}/about`}
                             class="text-white/80 hover:text-accent transition-colors text-sm"
                             >{t.nav.about}</a
                         >
                     </li>
                     <li>
                         <a
-                            href="/contact"
+                            href={`/${lang}/contact`}
                             class="text-white/80 hover:text-accent transition-colors text-sm"
                             >{t.nav.contact}</a
                         >
@@ -250,7 +250,7 @@ const t = getTranslations(lang);
                 <p class="text-white/60 text-sm">
                     {t.footer.copyright}
                 </p>
-                <p class="text-white/40 text-xs">Développé avec ❤️</p>
+                <p class="text-white/40 text-xs">par younessaribey.dev</p>
             </div>
         </div>
     </div>

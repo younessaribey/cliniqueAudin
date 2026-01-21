@@ -152,7 +152,10 @@ const partners = [
                         }
                     </p>
                 </div>
-                <a href="/contact" class="btn btn-primary px-8 py-4">
+                <a
+                    href={`/contact${lang !== "fr" ? `?lang=${lang}` : ""}`}
+                    class="btn btn-primary px-8 py-4"
+                >
                     <svg
                         class="w-5 h-5"
                         fill="none"

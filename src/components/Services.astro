@@ -123,7 +123,10 @@ const services = [
 
         <!-- CTA -->
         <div class="text-center mt-12">
-            <a href="/services" class="btn btn-primary">
+            <a
+                href={`/services${lang !== "fr" ? `?lang=${lang}` : ""}`}
+                class="btn btn-primary"
+            >
                 {lang === "ar" ? "اكتشف المزيد" : "En savoir plus"}
                 <svg
                     class="w-5 h-5"

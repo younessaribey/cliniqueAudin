@@ -25,7 +25,7 @@ const navLinks = [
         <nav class="flex items-center justify-between">
             <!-- Logo -->
             <a
-                href="/"
+                href={`/${lang}`}
                 class="flex items-center gap-3 group px-4 py-2 bg-white/95 backdrop-blur-md rounded-full shadow-lg"
             >
                 <div
@@ -59,7 +59,7 @@ const navLinks = [
                         navLinks.map((link) => (
                             <li>
                                 <a
-                                    href={link.href}
+                                    href={`/${lang}${link.href === "/" ? "" : link.href}`}
                                     class={`pill ${currentPath === link.href ? "pill-active" : ""}`}
                                 >
                                     <span class="pill-label">{link.label}</span>
@@ -76,19 +76,22 @@ const navLinks = [
                     class="flex items-center gap-1 bg-white/95 backdrop-blur-md rounded-full p-1 shadow-lg"
                 >
                     <a
-                        href="?lang=fr"
+                        href={`/fr${currentPath === "/" ? "" : currentPath}`}
                         class={`px-3 py-1.5 rounded-full text-sm font-medium transition-all ${lang === "fr" ? "bg-primary text-white" : "text-gray-600 hover:bg-gray-100"}`}
                     >
                         FR
                     </a>
                     <a
-                        href="?lang=ar"
+                        href={`/ar${currentPath === "/" ? "" : currentPath}`}
                         class={`px-3 py-1.5 rounded-full text-sm font-medium transition-all ${lang === "ar" ? "bg-primary text-white" : "text-gray-600 hover:bg-gray-100"}`}
                     >
                         عربي
                     </a>
                 </div>
-                <a href="/contact" class="btn btn-secondary text-sm py-2 px-4">
+                <a
+                    href={`/${lang}/contact`}
+                    class="btn btn-secondary text-sm py-2 px-4"
+                >
                     {t.hero.cta_primary}
                 </a>
             </div>
@@ -115,7 +118,7 @@ const navLinks = [
                     navLinks.map((link) => (
                         <li>
                             <a
-                                href={link.href}
+                                href={`/${lang}${link.href === "/" ? "" : link.href}`}
                                 class={`mobile-menu-link ${currentPath === link.href ? "mobile-menu-link-active" : ""}`}
                             >
                                 {link.label}
@@ -130,13 +133,13 @@ const navLinks = [
                 class="flex justify-center gap-2 mt-4 pt-4 border-t border-gray-200"
             >
                 <a
-                    href="?lang=fr"
+                    href={`/fr${currentPath === "/" ? "" : currentPath}`}
                     class={`px-4 py-2 rounded-full text-sm font-medium transition-all ${lang === "fr" ? "bg-primary text-white" : "bg-gray-100 text-gray-600"}`}
                 >
                     Français
                 </a>
                 <a
-                    href="?lang=ar"
+                    href={`/ar${currentPath === "/" ? "" : currentPath}`}
                     class={`px-4 py-2 rounded-full text-sm font-medium transition-all ${lang === "ar" ? "bg-primary text-white" : "bg-gray-100 text-gray-600"}`}
                 >
                     عربي

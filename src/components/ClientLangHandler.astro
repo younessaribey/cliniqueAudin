@@ -1,0 +1,42 @@
+---
+// This component handles language detection and persistence on the client side
+---
+
+<script is:inline>
+    (function () {
+        // Get current URL
+        const url = new URL(window.location.href);
+        const langParam = url.searchParams.get("lang");
+
+        console.log("🌐 CLIENT LANG HANDLER - URL:", url.href);
+        console.log("🌐 CLIENT LANG HANDLER - Lang param:", langParam);
+
+        // If we have a lang parameter, apply it immediately
+        if (langParam === "ar") {
+            console.log("🌐 Applying Arabic language");
+            document.documentElement.setAttribute("lang", "ar");
+            document.documentElement.setAttribute("dir", "rtl");
+            document.body.classList.add("font-arabic");
+            document.body.classList.remove("font-sans");
+
+            // Store preference
+            sessionStorage.setItem("preferredLang", "ar");
+
+            // Reload translations by triggering a page reload if needed
+            // This is a workaround for SSR not picking up query params
+            if (!document.body.dataset.langApplied) {
+                document.body.dataset.langApplied = "true";
+                window.location.reload();
+            }
+        } else if (langParam === "fr") {
+            sessionStorage.setItem("preferredLang", "fr");
+        }
+
+        // If no lang param but we have a stored preference, add it to URL
+        const storedLang = sessionStorage.getItem("preferredLang");
+        if (!langParam && storedLang && storedLang !== "fr") {
+            url.searchParams.set("lang", storedLang);
+            window.location.href = url.toString();
+        }
+    })();
+</script>

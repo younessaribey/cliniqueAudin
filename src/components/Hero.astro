@@ -30,11 +30,14 @@ const isRTL = lang === "ar";
         >
         </div>
 
-        <!-- Subtle pattern -->
-        <div
-            class="absolute inset-0 opacity-[0.02]"
-            style="background-image: radial-gradient(circle, var(--color-primary) 1px, transparent 1px); background-size: 40px 40px;"
-        >
+        <!-- IVF Background Image -->
+        <div class="absolute inset-0 flex items-center justify-center">
+            <img
+                src="/images/ivf-sperm-fertilising-egg.jpg"
+                alt=""
+                class="w-[300px] h-[300px] md:w-[450px] md:h-[450px] lg:w-[550px] lg:h-[550px] object-contain opacity-[0.25] rounded-full"
+                style="filter: brightness(1.05);"
+            />
         </div>
     </div>
 
@@ -89,7 +92,7 @@ const isRTL = lang === "ar";
             style="animation-delay: 0.5s"
         >
             <a
-                href="/contact"
+                href={`/contact${lang !== "fr" ? `?lang=${lang}` : ""}`}
                 class="btn btn-secondary px-10 py-5 text-lg shadow-xl hover:shadow-2xl"
             >
                 <svg
@@ -105,7 +108,10 @@ const isRTL = lang === "ar";
                 </svg>
                 {t.hero.cta_primary}
             </a>
-            <a href="/services" class="btn btn-outline px-10 py-5 text-lg">
+            <a
+                href={`/services${lang !== "fr" ? `?lang=${lang}` : ""}`}
+                class="btn btn-outline px-10 py-5 text-lg"
+            >
                 {t.hero.cta_secondary}
                 <svg
                     class="w-5 h-5"

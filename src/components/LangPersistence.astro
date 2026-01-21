@@ -1,0 +1,18 @@
+<script is:inline>
+    // Get lang from URL on client side and store in sessionStorage
+    const urlParams = new URLSearchParams(window.location.search);
+    const langParam = urlParams.get("lang");
+
+    if (langParam) {
+        sessionStorage.setItem("preferredLang", langParam);
+        console.log("🌐 CLIENT: Stored lang:", langParam);
+    }
+
+    // If no lang param but we have a stored preference, redirect with lang param
+    const storedLang = sessionStorage.getItem("preferredLang");
+    if (!langParam && storedLang && storedLang !== "fr") {
+        const newUrl = new URL(window.location.href);
+        newUrl.searchParams.set("lang", storedLang);
+        window.location.href = newUrl.toString();
+    }
+</script>
