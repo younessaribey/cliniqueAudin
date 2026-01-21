@@ -1,3 +1,182 @@
 ---
-return Astro.redirect("/fr/about");
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import FloatingWhatsApp from "../components/FloatingWhatsApp";
+import type { Language } from "../lib/i18n";
+import { getTranslations } from "../lib/i18n";
+
+const lang = "fr" as const;
+const t = getTranslations(lang);
+
+const values = [
+    {
+        title: "Expertise",
+        description: "Plus de 20 ans d'expérience en PMA",
+        icon: "🏆",
+    },
+    {
+        title: "Technologie",
+        description: "Équipements modernes et laboratoires avancés",
+        icon: "🔬",
+    },
+    {
+        title: "Équipe",
+        description: "Médecins et spécialistes hautement qualifiés",
+        icon: "👨‍⚕️",
+    },
+    {
+        title: "Accompagnement",
+        description: "Suivi personnalisé à chaque étape",
+        icon: "💚",
+    },
+];
 ---
+
+<BaseLayout title="À Propos - Clinique Audin" lang={lang}>
+    <Header lang={lang} currentPath="/about" />
+
+    <main class="pt-24">
+        <!-- Hero Section -->
+        <section
+            class="py-16 bg-gradient-to-br from-primary via-primary-light to-accent text-white"
+        >
+            <div class="container text-center">
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">
+                    À Propos de Nous
+                </h1>
+                <p class="text-xl text-white/80 max-w-2xl mx-auto">
+                    Clinique Audin, votre centre PMA à Alger
+                </p>
+            </div>
+        </section>
+
+        <!-- About Content -->
+        <section class="section">
+            <div class="container">
+                <div
+                    class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center"
+                >
+                    <!-- Text Content -->
+                    <div>
+                        <span
+                            class="inline-block px-4 py-1.5 bg-secondary/10 text-secondary-dark text-sm font-semibold rounded-full mb-4"
+                        >
+                            Notre Histoire
+                        </span>
+                        <h2
+                            class="text-3xl md:text-4xl font-bold text-dark mb-6"
+                        >
+                            Plus de 20 ans d'excellence
+                        </h2>
+                        <div class="space-y-4 text-gray-600 leading-relaxed">
+                            <p>
+                                La Clinique Audin a été fondée au cœur d'Alger
+                                avec pour mission d'offrir les meilleurs
+                                services de procréation médicalement assistée.
+                                Depuis plus de vingt ans, nous accompagnons des
+                                milliers de familles dans leur parcours vers la
+                                parentalité.
+                            </p>
+                            <p>
+                                Nous croyons en l'importance de combiner
+                                technologie de pointe et accompagnement humain.
+                                Notre équipe de médecins et spécialistes
+                                s'engage à fournir les meilleurs soins
+                                possibles, dans le respect des valeurs et de la
+                                vie privée de chaque famille.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Visual -->
+                    <div class="relative">
+                        <!-- Dot Pattern Background -->
+                        <div
+                            class="absolute inset-0 -m-4"
+                            style="background-image: radial-gradient(circle, white 1px, transparent 1px); background-size: 30px 30px; z-index: 0;"
+                        >
+                        </div>
+
+                        <div
+                            class="relative aspect-square rounded-3xl overflow-hidden shadow-2xl z-10"
+                        >
+                            <img
+                                src="/images/ivf-procedure.jpg"
+                                alt="Procédure FIV ICSI"
+                                class="w-full h-full object-cover"
+                            />
+                        </div>
+
+                        <!-- Floating Badge -->
+                        <div
+                            class="absolute -bottom-4 -right-4 bg-white rounded-2xl shadow-xl p-6"
+                        >
+                            <div class="text-center">
+                                <div
+                                    class="text-4xl font-bold gradient-text-gold"
+                                >
+                                    20+
+                                </div>
+                                <div class="text-sm text-gray-500">
+                                    Ans d'expérience
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Values Section -->
+        <section class="section section-light">
+            <div class="container">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold text-dark mb-4">
+                        Nos Valeurs
+                    </h2>
+                    <p class="text-gray-600 max-w-2xl mx-auto">
+                        Les principes qui guident notre travail au quotidien
+                    </p>
+                </div>
+
+                <div
+                    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+                >
+                    {
+                        values.map((value) => (
+                            <div class="premium-card text-center">
+                                <div class="text-4xl mb-4">{value.icon}</div>
+                                <h3 class="text-xl font-bold text-dark mb-2">
+                                    {value.title}
+                                </h3>
+                                <p class="text-gray-600 text-sm">
+                                    {value.description}
+                                </p>
+                            </div>
+                        ))
+                    }
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="section">
+            <div class="container text-center">
+                <h2 class="text-3xl font-bold text-dark mb-4">
+                    Prêt à commencer ?
+                </h2>
+                <p class="text-gray-600 mb-8 max-w-xl mx-auto">
+                    Contactez-nous aujourd'hui pour prendre votre premier
+                    rendez-vous avec notre équipe médicale.
+                </p>
+                <a href="/fr/contact" class="btn btn-primary">
+                    Nous Contacter
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <Footer lang={lang} />
+    <FloatingWhatsApp client:load lang={lang} phoneNumber="213560055803" />
+</BaseLayout>

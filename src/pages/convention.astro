@@ -1,3 +1,26 @@
 ---
-return Astro.redirect("/fr/convention");
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Header from "../components/Header.astro";
+import ConventionSection from "../components/Convention.astro";
+import CTA from "../components/CTA.astro";
+import Footer from "../components/Footer.astro";
+import FloatingWhatsApp from "../components/FloatingWhatsApp";
+
+const lang = "fr" as const;
 ---
+
+<BaseLayout
+    title="Convention - Clinique Audin"
+    lang={lang}
+    description="Nos conventions avec les grandes institutions - DGSN, SONATRACH, DOUANE, Inter Partner Assistance"
+>
+    <Header lang={lang} currentPath="/convention" />
+
+    <main class="pt-24">
+        <ConventionSection lang={lang} />
+        <CTA lang={lang} />
+    </main>
+
+    <Footer lang={lang} />
+    <FloatingWhatsApp client:load lang={lang} phoneNumber="213560055803" />
+</BaseLayout>
